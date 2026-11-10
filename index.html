@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>nekomimi0128.com — JF6GXS ねこみみの基地局</title>
+<meta name="description" content="ねこみみ（N3）の個人サイト。アマチュア無線 JF6GXS、鉄道、放送、VRChatなど。">
+<style>
+  :root {
+    --bg: #070a12;
+    --panel: rgba(16, 22, 34, .85);
+    --panel2: rgba(23, 32, 48, .9);
+    --line: #243145;
+    --text: #eef2f7;
+    --sub: #93a3b5;
+    --accent: #5ec4e6;
+    --accent2: #e6c87a;
+    --green: #57d977;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP", "Yu Gothic UI", sans-serif;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+  #stars { position: fixed; inset: 0; z-index: -2; }
+  #glow {
+    position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background: radial-gradient(ellipse 70% 45% at 50% -5%, rgba(94,196,230,.16), transparent);
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(7,10,18,.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav {
+    max-width: 920px; margin: 0 auto; padding: .65rem 1rem;
+    display: flex; align-items: center; gap: 1.1rem; flex-wrap: wrap;
+  }
+  .nav .logo { font-weight: 700; letter-spacing: .04em; color: var(--text); display: flex; align-items: center; gap: .5rem; }
+  .nav .onair {
+    font-size: .68rem; letter-spacing: .18em; color: #0a0f16;
+    background: var(--green); border-radius: 4px; padding: .05rem .45rem; font-weight: 700;
+    animation: blink 2.4s ease-in-out infinite;
+  }
+  @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: .45; } }
+  .nav nav { display: flex; gap: 1rem; font-size: .9rem; }
+  .nav nav a { color: var(--sub); }
+  .nav nav a:hover { color: var(--accent); text-decoration: none; }
+  .nav .clock { margin-left: auto; font-size: .85rem; color: var(--sub); font-variant-numeric: tabular-nums; }
+
+  .hero { padding: 5rem 1rem 3rem; text-align: center; position: relative; }
+  .hero .freq {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    color: var(--sub); font-size: .85rem; letter-spacing: .35em; margin: 0 0 1.2rem;
+  }
+  .hero h1 {
+    font-size: clamp(3rem, 9vw, 4.6rem); margin: 0; line-height: 1.1; letter-spacing: .02em;
+    background: linear-gradient(180deg, #ffffff 20%, #bcd8ea 60%, #5ec4e6);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .hero .call {
+    display: inline-block; margin-top: 1.1rem;
+    border: 1px solid var(--accent2); color: var(--accent2);
+    border-radius: 999px; padding: .15rem 1.1rem;
+    font-size: 1rem; letter-spacing: .35em; font-weight: 700;
+  }
+  .hero .morse {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    color: var(--accent); letter-spacing: .3em; min-height: 1.6em; margin: .9rem 0 0;
+  }
+  .hero .tag { color: var(--sub); margin: 1.2rem auto 0; max-width: 560px; }
+  .smeter {
+    max-width: 420px; margin: 2rem auto 0;
+    display: flex; align-items: flex-end; gap: 4px; height: 42px; justify-content: center;
+  }
+  .smeter i {
+    width: 12px; border-radius: 2px 2px 0 0; background: #223146;
+    transition: height .18s ease, background .18s ease;
+  }
+  .smeter-label { color: var(--sub); font-size: .72rem; letter-spacing: .25em; margin-top: .4rem; }
+
+  main { max-width: 920px; margin: 0 auto; padding: 1rem 1rem 3rem; }
+  section { margin-bottom: 3.2rem; }
+  .fade { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+  .fade.on { opacity: 1; transform: none; }
+  h2 {
+    font-size: 1.25rem; margin: 0 0 1.1rem; letter-spacing: .12em;
+    display: flex; align-items: center; gap: .8rem;
+  }
+  h2::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--line), transparent); }
+  h2 .en { color: var(--accent2); font-size: .8rem; letter-spacing: .3em; font-weight: 400; }
+  p { margin: .5rem 0; }
+  .sub { color: var(--sub); }
+
+  .status {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+    padding: 1.1rem 1.3rem;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: .7rem 1.5rem;
+    font-size: .95rem;
+  }
+  .status .k { color: var(--sub); font-size: .75rem; letter-spacing: .12em; }
+  .status .v { font-variant-numeric: tabular-nums; }
+  .dot { display: inline-block; width: .55em; height: .55em; border-radius: 50%; background: var(--green); margin-right: .4em; box-shadow: 0 0 9px var(--green); }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+  .card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+    padding: 1.2rem 1.3rem; transition: transform .25s ease, border-color .25s ease;
+  }
+  .card:hover { transform: translateY(-4px); border-color: var(--accent); }
+  .card .icon { font-size: 1.7rem; line-height: 1; }
+  .card h3 { margin: .6rem 0 .35rem; font-size: 1.05rem; }
+  .card p { color: var(--sub); font-size: .92rem; margin: 0; }
+  .card .big { font-size: 1.3rem; color: var(--accent2); letter-spacing: .12em; font-weight: 700; }
+
+  .logbook {
+    width: 100%; border-collapse: collapse; font-size: .93rem;
+    background: var(--panel); border: 1px solid var(--line); border-radius: 14px; overflow: hidden;
+  }
+  .logbook th, .logbook td { padding: .65rem 1rem; text-align: left; border-bottom: 1px dashed var(--line); vertical-align: top; }
+  .logbook tr:last-child td { border-bottom: none; }
+  .logbook th { color: var(--sub); font-size: .75rem; letter-spacing: .12em; font-weight: 400; background: var(--panel2); }
+  .logbook time { color: var(--accent2); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  .links { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+  .link-card {
+    display: block; background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+    padding: 1.1rem 1.3rem; color: var(--text); transition: border-color .25s ease, transform .25s ease;
+  }
+  .link-card:hover { border-color: var(--accent2); text-decoration: none; transform: translateY(-3px); }
+  .link-card .name { font-weight: 700; }
+  .link-card .desc { color: var(--sub); font-size: .88rem; }
+  .link-card .arr { float: right; color: var(--sub); }
+
+  .teapot-zone { text-align: center; margin: 2.4rem 0 0; }
+  .teapot-btn {
+    background: none; border: 1px solid var(--line); color: var(--sub);
+    border-radius: 999px; padding: .45rem 1.3rem; font-size: .9rem; cursor: pointer;
+    transition: border-color .2s ease, color .2s ease;
+  }
+  .teapot-btn:hover { border-color: var(--accent2); color: var(--accent2); }
+
+  footer { border-top: 1px solid var(--line); padding: 1.6rem 1rem 2.2rem; text-align: center; color: var(--sub); font-size: .85rem; }
+
+  .overlay {
+    position: fixed; inset: 0; z-index: 50; display: none;
+    align-items: center; justify-content: center;
+    background: rgba(4, 6, 11, .92); padding: 1rem;
+  }
+  .overlay.open { display: flex; }
+  .panel {
+    max-width: 560px; width: 100%; text-align: center;
+    background: #0c1220; border: 1px solid var(--line); border-radius: 10px;
+    padding: 3rem 1.5rem;
+  }
+  .panel .pot { font-size: 3rem; }
+  .panel .code { font-size: 1.05rem; letter-spacing: .25em; color: var(--sub); margin-top: .6rem; }
+  .panel .msg { font-size: 1.5rem; margin: 1rem 0 .4rem; }
+  .panel .detail { color: var(--sub); font-size: .9rem; }
+  .panel button {
+    margin-top: 1.7rem; background: none; border: 1px solid var(--line); color: var(--text);
+    border-radius: 999px; padding: .45rem 1.5rem; cursor: pointer;
+  }
+  .panel button:hover { border-color: var(--accent); }
+</style>
+</head>
+<body>
+
+<canvas id="stars"></canvas>
+<div id="glow"></div>
+
+<header>
+  <div class="nav">
+    <a class="logo" href="#">nekomimi0128.com <span class="onair">ON AIR</span></a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#activities">Activities</a>
+      <a href="#log">Log</a>
+      <a href="#links">Links</a>
+    </nav>
+    <div class="clock" id="clock">--:--:-- JST</div>
+  </div>
+</header>
+
+<div class="hero">
+  <p class="freq">— CQ CQ DE JF6GXS —</p>
+  <h1>ねこみみ</h1>
+  <div><span class="call">JF6GXS</span></div>
+  <p class="morse" id="morse"></p>
+  <p class="tag">アマチュア無線と鉄道と、技術あれこれの基地局。<br>ここは ねこみみ（N3）の個人サイトです。</p>
+  <div class="smeter" id="smeter" aria-hidden="true"></div>
+  <div class="smeter-label">SIGNAL — S METER</div>
+</div>
+
+<main>
+  <section class="fade">
+    <h2>運用状況 <span class="en">STATION STATUS</span></h2>
+    <div class="status">
+      <div><div class="k">STATUS</div><div class="v"><span class="dot"></span>運用中</div></div>
+      <div><div class="k">LOCAL TIME</div><div class="v" id="status-time">--:--:--</div></div>
+      <div><div class="k">VISITOR No.</div><div class="v" id="visitor">—</div></div>
+      <div><div class="k">SERVER</div><div class="v">I'm a teapot 🫖</div></div>
+    </div>
+  </section>
+
+  <section id="about" class="fade">
+    <h2>自己紹介 <span class="en">ABOUT</span></h2>
+    <p>ねこみみ（N3）と申します。このサイトは個人の趣味の置き場です。</p>
+    <p>無線で交信したり、鉄道を眺めたり、夜な夜な星空みたいな画面を作ったりしています。気の向いたときに、気の向いたものを更新します。</p>
+  </section>
+
+  <section id="activities" class="fade">
+    <h2>活動 <span class="en">ACTIVITIES</span></h2>
+    <div class="cards">
+      <div class="card">
+        <div class="icon">📻</div>
+        <h3>アマチュア無線</h3>
+        <p class="big">JF6GXS</p>
+        <p>コールサイン JF6GXS で運用中。交信いただいた際はよろしくお願いいたします。QSLカードの交換も歓迎です。</p>
+      </div>
+      <div class="card">
+        <div class="icon">🚂</div>
+        <h3>鉄道</h3>
+        <p>蒸気機関車から地方鉄道まで。8620形やD60形のような、働き続けてきた車両が特に好きです。地元・福岡の鉄道にも目を光らせています。</p>
+      </div>
+      <div class="card">
+        <div class="icon">🎙</div>
+        <h3>放送</h3>
+        <p>放送部で活動中。声を届ける仕事全般が好きです。</p>
+      </div>
+      <div class="card">
+        <div class="icon">🥽</div>
+        <h3>VRChat</h3>
+        <p>Meta Quest 3S でスタンドアロン運用中。のんびりワールド巡りをしています。</p>
+      </div>
+      <div class="card">
+        <div class="icon">💻</div>
+        <h3>技術まわり</h3>
+        <p>自作・自己管理が基本。Linux、ネットワーク、ドメイン運用など、触っているうちに覚えるタイプです。</p>
+      </div>
+      <div class="card">
+        <div class="icon">🎵</div>
+        <h3>音楽ゲーム</h3>
+        <p>気が向いたときにプレイしています。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="log" class="fade">
+    <h2>運用ログ <span class="en">LOG</span></h2>
+    <table class="logbook">
+      <tr><th>DATE</th><th>ENTRY</th></tr>
+      <tr><td><time>2026-11-11</time></td><td>サイトをリニューアルしました。</td></tr>
+      <tr><td><time>2026-11-10</time></td><td>独自ドメイン <strong>nekomimi0128.com</strong> を取得し、このサイトを開設しました。</td></tr>
+      <tr><td><time>2026-11-10</time></td><td>サイトのデザインを星空仕様に更新しました。</td></tr>
+    </table>
+  </section>
+
+  <section id="links" class="fade">
+    <h2>リンク <span class="en">LINKS</span></h2>
+    <div class="links">
+      <a class="link-card" href="https://github.com/nekomimi0128" target="_blank" rel="noopener">
+        <span class="arr">→</span>
+        <div class="name">GitHub</div>
+        <div class="desc">github.com/nekomimi0128 — コードとバックアップの置き場</div>
+      </a>
+      <a class="link-card" href="https://www.qrz.com/db/JF6GXS" target="_blank" rel="noopener">
+        <span class="arr">→</span>
+        <div class="name">QRZ.com — JF6GXS</div>
+        <div class="desc">アマチュア無線のプロフィールとログ</div>
+      </a>
+      <div class="link-card">
+        <div class="name">Discord</div>
+        <div class="desc">@nekomimichanyo — 連絡はこちらへ</div>
+      </div>
+    </div>
+
+    <div class="teapot-zone">
+      <button class="teapot-btn" id="teapot-btn">🫖 コーヒーを淹れる</button>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 nekomimi0128 — nekomimi0128.com</p>
+  <p>HTTP 418: I'm a teapot 🫖</p>
+</footer>
+
+<div class="overlay" id="overlay">
+  <div class="panel">
+    <div class="pot">🫖</div>
+    <div class="code">HTTP 418</div>
+    <div class="msg">私はティーポットです。</div>
+    <div class="detail">コーヒーを抽出できません。</div>
+    <button id="overlay-close">戻る</button>
+  </div>
+</div>
+
+<script>
+  // 星空（流れ星つき）
+  const cv = document.getElementById("stars"), cx = cv.getContext("2d");
+  let stars = [], meteor = null;
+  function buildStars() {
+    cv.width = innerWidth; cv.height = innerHeight;
+    stars = Array.from({ length: 150 }, () => ({
+      x: Math.random() * cv.width, y: Math.random() * cv.height,
+      r: Math.random() * 1.3 + .2, p: Math.random() * Math.PI * 2, s: .008 + Math.random() * .02
+    }));
+  }
+  function spawnMeteor() {
+    meteor = { x: Math.random() * cv.width * .7 + cv.width * .2, y: Math.random() * cv.height * .25, vx: -7 - Math.random() * 4, vy: 4 + Math.random() * 2, life: 1 };
+    setTimeout(spawnMeteor, 5000 + Math.random() * 9000);
+  }
+  function drawStars() {
+    cx.clearRect(0, 0, cv.width, cv.height);
+    for (const st of stars) {
+      st.p += st.s;
+      cx.globalAlpha = .35 + Math.sin(st.p) * .3;
+      cx.fillStyle = "#cfe4ff";
+      cx.beginPath(); cx.arc(st.x, st.y, st.r, 0, Math.PI * 2); cx.fill();
+    }
+    if (meteor) {
+      const g = cx.createLinearGradient(meteor.x, meteor.y, meteor.x + 90, meteor.y - 45);
+      g.addColorStop(0, "rgba(255,255,255," + (.85 * meteor.life) + ")");
+      g.addColorStop(1, "rgba(255,255,255,0)");
+      cx.globalAlpha = 1; cx.strokeStyle = g; cx.lineWidth = 2;
+      cx.beginPath(); cx.moveTo(meteor.x, meteor.y); cx.lineTo(meteor.x + 90, meteor.y - 45); cx.stroke();
+      meteor.x += meteor.vx; meteor.y += meteor.vy; meteor.life -= .014;
+      if (meteor.life <= 0) meteor = null;
+    }
+    cx.globalAlpha = 1;
+    requestAnimationFrame(drawStars);
+  }
+  addEventListener("resize", buildStars);
+  buildStars(); drawStars(); setTimeout(spawnMeteor, 2600);
+
+  // Sメーター風アニメーション
+  const sm = document.getElementById("smeter");
+  const bars = [];
+  for (let i = 0; i < 18; i++) { const b = document.createElement("i"); sm.appendChild(b); bars.push(b); }
+  setInterval(() => {
+    const level = .35 + Math.random() * .6;
+    bars.forEach((b, i) => {
+      const on = i / bars.length < level;
+      const h = 8 + (i / bars.length) * 32 + (on ? Math.random() * 4 : 0);
+      b.style.height = h + "px";
+      b.style.background = !on ? "#223146" : (i > 13 ? "#e0684e" : i > 9 ? "#e6c87a" : "#57d977");
+    });
+  }, 190);
+
+  // 時計（JST）
+  function tick() {
+    const now = new Date();
+    const jst = new Date(now.getTime() + (9 * 60 + now.getTimezoneOffset()) * 60000);
+    const p = n => String(n).padStart(2, "0");
+    const t = p(jst.getHours()) + ":" + p(jst.getMinutes()) + ":" + p(jst.getSeconds());
+    document.getElementById("clock").textContent = t + " JST";
+    document.getElementById("status-time").textContent = t + " JST";
+  }
+  tick(); setInterval(tick, 1000);
+
+  // コールサインをモールスでタイプ表示
+  const morseText = ".--- ..-. -.... --. -..- ...";
+  const morseEl = document.getElementById("morse");
+  let mi = 0;
+  (function typeMorse() {
+    if (mi <= morseText.length) {
+      morseEl.textContent = morseText.slice(0, mi++);
+      setTimeout(typeMorse, 55);
+    }
+  })();
+
+  // 訪問者カウンター（このブラウザでの通算）
+  const key = "nekomimi0128-visits";
+  const n = (parseInt(localStorage.getItem(key) || "0", 10) || 0) + 1;
+  localStorage.setItem(key, String(n));
+  document.getElementById("visitor").textContent = "あなたはこの端末から " + n + " 回目の訪問です";
+
+  // スクロールでふわっと表示
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add("on");
+  }), { threshold: .08 });
+  document.querySelectorAll(".fade").forEach(el => io.observe(el));
+
+  // 418
+  const overlay = document.getElementById("overlay");
+  document.getElementById("teapot-btn").addEventListener("click", () => overlay.classList.add("open"));
+  document.getElementById("overlay-close").addEventListener("click", () => overlay.classList.remove("open"));
+  overlay.addEventListener("click", e => { if (e.target === overlay) overlay.classList.remove("open"); });
+</script>
+
+</body>
+</html>
