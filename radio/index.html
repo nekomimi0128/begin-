@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JF6GXS 局ページ — Radio | nekomimi0128.com</title>
+<meta name="description" content="アマチュア無線局 JF6GXS のページ。使用機材（ICOM ID-50 / DIAMOND SRH701）、運用バンド・モード（430MHz DV / D-STAR）、QSLカードの方針など。">
+<link rel="canonical" href="https://nekomimi0128.com/radio/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐈</text></svg>">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="nekomimi0128.com">
+<meta property="og:title" content="JF6GXS 局ページ — Radio | nekomimi0128.com">
+<meta property="og:description" content="アマチュア無線局 JF6GXS の使用機材・運用情報・QSL方針。">
+<meta property="og:url" content="https://nekomimi0128.com/radio/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@Nekomimichanyo">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "url": "https://nekomimi0128.com/radio/",
+  "name": "JF6GXS 局ページ",
+  "about": { "@id": "https://nekomimi0128.com/#person" }
+}
+</script>
+<style>
+  :root {
+    --bg: #070a12;
+    --panel: rgba(16, 22, 34, .85);
+    --panel2: rgba(23, 32, 48, .9);
+    --line: #243145;
+    --text: #eef2f7;
+    --sub: #93a3b5;
+    --accent: #5ec4e6;
+    --accent2: #e6c87a;
+    --green: #57d977;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP", "Yu Gothic UI", sans-serif;
+    line-height: 1.75; overflow-x: hidden;
+  }
+  #glow { position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background: radial-gradient(ellipse 70% 45% at 50% -5%, rgba(94,196,230,.16), transparent); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  header { position: sticky; top: 0; z-index: 10; background: rgba(7,10,18,.85);
+    backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .nav { max-width: 920px; margin: 0 auto; padding: .65rem 1rem; display: flex; align-items: center; gap: 1.1rem; flex-wrap: wrap; }
+  .nav .logo { font-weight: 700; letter-spacing: .04em; color: var(--text); display: flex; align-items: center; gap: .5rem; }
+  .nav .onair { font-size: .68rem; letter-spacing: .18em; color: #0a0f16; background: var(--green);
+    border-radius: 4px; padding: .05rem .45rem; font-weight: 700; }
+  .nav nav { display: flex; gap: 1rem; font-size: .9rem; }
+  .nav nav a { color: var(--sub); }
+  .nav nav a:hover { color: var(--accent); text-decoration: none; }
+  .hero { padding: 4.2rem 1rem 2.4rem; text-align: center; }
+  .hero .freq { font-family: ui-monospace, Menlo, Consolas, monospace; color: var(--sub);
+    font-size: .85rem; letter-spacing: .35em; margin: 0 0 1rem; }
+  .hero h1 { font-size: clamp(2.8rem, 9vw, 4.2rem); margin: 0; line-height: 1.1; letter-spacing: .04em;
+    background: linear-gradient(180deg, #ffffff 20%, #bcd8ea 60%, #5ec4e6);
+    -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero .morse { font-family: ui-monospace, Menlo, Consolas, monospace; color: var(--accent);
+    letter-spacing: .3em; margin: .9rem 0 0; }
+  .hero .tag { color: var(--sub); margin: 1.1rem auto 0; max-width: 560px; }
+  main { max-width: 920px; margin: 0 auto; padding: 1rem 1rem 3rem; }
+  section { margin-bottom: 3rem; }
+  h2 { font-size: 1.25rem; margin: 0 0 1.1rem; letter-spacing: .12em; display: flex; align-items: center; gap: .8rem; }
+  h2::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--line), transparent); }
+  h2 .en { color: var(--accent2); font-size: .8rem; letter-spacing: .3em; font-weight: 400; }
+  .logbook { width: 100%; border-collapse: collapse; font-size: .95rem; background: var(--panel);
+    border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+  .logbook th, .logbook td { padding: .7rem 1rem; text-align: left; border-bottom: 1px dashed var(--line); vertical-align: top; }
+  .logbook tr:last-child td { border-bottom: none; }
+  .logbook th { color: var(--sub); font-size: .78rem; letter-spacing: .12em; font-weight: 400; background: var(--panel2); width: 34%; white-space: nowrap; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 1.2rem 1.3rem; }
+  .card h3 { margin: 0 0 .4rem; font-size: 1.05rem; }
+  .card p { color: var(--sub); font-size: .92rem; margin: 0; }
+  .links { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+  .link-card { display: block; background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+    padding: 1.1rem 1.3rem; color: var(--text); transition: border-color .25s ease, transform .25s ease; }
+  .link-card:hover { border-color: var(--accent2); text-decoration: none; transform: translateY(-3px); }
+  .link-card .name { font-weight: 700; }
+  .link-card .desc { color: var(--sub); font-size: .88rem; }
+  .link-card .arr { float: right; color: var(--sub); }
+  footer { border-top: 1px solid var(--line); padding: 1.6rem 1rem 2.2rem; text-align: center; color: var(--sub); font-size: .85rem; }
+</style>
+</head>
+<body>
+<div id="glow"></div>
+<header>
+  <div class="nav">
+    <a class="logo" href="/">🐈 nekomimi0128.com <span class="onair">ON AIR</span></a>
+    <nav>
+      <a href="/">トップ</a>
+      <a href="/radio/">局ページ</a>
+      <a href="https://nlog.nekomimi0128.com/">NLog</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <p class="freq">430.000 MHz — DV</p>
+  <h1>JF6GXS</h1>
+  <p class="morse">.--- ..-. -.... --. -..- ...</p>
+  <p class="tag">アマチュア無線局 JF6GXS のページです。ハンディ機での運用が中心です。</p>
+</div>
+
+<main>
+  <section>
+    <h2>設備 <span class="en">STATION</span></h2>
+    <table class="logbook">
+      <tr><th>コールサイン</th><td>JF6GXS</td></tr>
+      <tr><th>無線機</th><td>ICOM ID-50</td></tr>
+      <tr><th>アンテナ</th><td>DIAMOND ANTENNA SRH701</td></tr>
+      <tr><th>運用形態</th><td>ハンディ機＋ホイップアンテナでの運用が中心</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>運用 <span class="en">OPERATION</span></h2>
+    <div class="cards">
+      <div class="card">
+        <h3>バンド / モード</h3>
+        <p>主に 430MHz 帯 DV（D-STAR）で運用しています。</p>
+      </div>
+      <div class="card">
+        <h3>QSLカード</h3>
+        <p>ダイレクト、または JARL ビューロー経由で交換しています。</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>リンク <span class="en">LINKS</span></h2>
+    <div class="links">
+      <a class="link-card" href="https://nlog.nekomimi0128.com/">
+        <span class="arr">→</span>
+        <span class="name">NLog</span>
+        <div class="desc">交信ログ管理・QSLカード作成アプリ</div>
+      </a>
+      <a class="link-card" href="https://www.qrz.com/db/JF6GXS">
+        <span class="arr">→</span>
+        <span class="name">QRZ.com — JF6GXS</span>
+        <div class="desc">QRZ.com の局プロフィール</div>
+      </a>
+      <a class="link-card" href="/">
+        <span class="arr">→</span>
+        <span class="name">nekomimi0128.com</span>
+        <div class="desc">トップページ（基地局）へ戻る</div>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>JF6GXS — nekomimi0128.com/radio/</p>
+</footer>
+</body>
+</html>
