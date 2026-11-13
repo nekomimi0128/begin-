@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>検出しました — nekomimi0128.com</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐈</text></svg>">
+<style>
+  :root {
+    --bg: #070a12; --panel: #0d1420; --line: #243145;
+    --text: #eef2f7; --sub: #93a4bb; --accent: #5ec4e6; --gold: #e6c87a;
+  }
+  * { box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif; margin: 0; line-height: 1.8; }
+  canvas#stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+  .wrap { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; padding: 4rem 1.25rem; }
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 1.5rem 1.75rem; }
+  h1 { font-size: 1.6rem; margin: 0 0 1rem; }
+  h1 .code { color: var(--gold); }
+  p { margin: .5rem 0; }
+  .sub { color: var(--sub); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .links { margin-top: 1.5rem; display: flex; gap: 1.25rem; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+<canvas id="stars"></canvas>
+<div class="wrap">
+  <div class="panel">
+    <h1>踏みましたね <span class="code">(418)</span></h1>
+    <p>このページへのリンクは、画面のどこにも見えないように置いてあります。人間の訪問者は、ここにたどり着けません。</p>
+    <p>つまり、あなたはボットですね。</p>
+    <p class="sub">ご安心を。特に何も起きません。あなたの来訪は Cloudflare の観測記録に残り、本サイトの「クローラー図鑑」の観察対象として展示されます。それだけです。</p>
+    <p class="sub">お茶でもどうぞ。ただし私はティーポットですので、コーヒーは淹れられません。</p>
+    <div class="links">
+      <a href="/bots/">クローラー図鑑を見る</a>
+      <a href="/">トップページへ</a>
+    </div>
+  </div>
+</div>
+<script>
+  const c = document.getElementById('stars'), x = c.getContext('2d');
+  let W, H; const S = [];
+  function rs() { W = c.width = innerWidth; H = c.height = innerHeight; }
+  addEventListener('resize', rs); rs();
+  for (let i = 0; i < 120; i++) S.push({ x: Math.random() * W, y: Math.random() * H, r: Math.random() * 1.3 + .2, p: Math.random() * 6.28 });
+  (function d(t) { x.clearRect(0, 0, W, H); for (const s of S) { x.globalAlpha = .35 + .35 * Math.sin(t / 900 + s.p); x.fillStyle = '#cfe6ff'; x.beginPath(); x.arc(s.x, s.y, s.r, 0, 6.29); x.fill(); } requestAnimationFrame(d); })(0);
+</script>
+</body>
+</html>
