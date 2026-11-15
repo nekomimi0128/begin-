@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>もしもの時のために — nekomimi0128.com</title>
+<meta name="description" content="私に万一のことがあった時のために、インターネット上に残したものの後始末について希望を書いたページ。">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐈</text></svg>">
+<style>
+  :root {
+    --bg: #070a12; --panel: #0d1420; --line: #243145;
+    --text: #eef2f7; --sub: #93a4bb; --accent: #5ec4e6; --gold: #e6c87a; --danger: #e67a7a;
+  }
+  * { box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif; margin: 0; line-height: 1.8; }
+  canvas#stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+  .wrap { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .back { font-size: .9rem; color: var(--sub); }
+  h1 { font-size: 2rem; margin: 1rem 0 .25rem; letter-spacing: .03em; }
+  h1 .en { color: var(--gold); font-size: 1rem; letter-spacing: .2em; display: block; }
+  .lead { color: var(--sub); margin: .5rem 0 2rem; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 1.1rem 1.25rem; margin: 0 0 1rem; }
+  .card h2 { margin: 0 0 .4rem; font-size: 1.2rem; }
+  .card p { margin: .4rem 0; }
+  .card dl { display: grid; grid-template-columns: 7.5em 1fr; gap: .2rem .75rem; margin: .6rem 0 0; font-size: .95rem; }
+  .card dt { color: var(--gold); }
+  .card dd { margin: 0; }
+  table { width: 100%; border-collapse: collapse; margin: .5rem 0 .25rem; font-size: .95rem; }
+  th, td { border: 1px solid var(--line); padding: .45rem .7rem; text-align: left; }
+  th { background: var(--panel); color: var(--gold); font-weight: 600; }
+  ul { margin: .4rem 0; padding-left: 1.4rem; }
+  .note { color: var(--sub); font-size: .85rem; margin-top: 2.5rem; border-top: 1px solid var(--line); padding-top: 1rem; }
+</style>
+</head>
+<body>
+<canvas id="stars"></canvas>
+<div class="wrap">
+<a class="back" href="/">← nekomimi0128.com に戻る</a>
+<h1><span class="en">FOR MY FAMILY</span>もしもの時のために</h1>
+<p class="lead">このページは、私（ねこみみ／N3）に万一のことがあった時のために用意したものです。法的な遺言ではありません。インターネット上に残したもの（このサイトや各種アカウント）の後始末について、私の希望を書いておきます。このページのURLは、家族と、後始末をお願いしたい人にだけ渡してあります。家族はITに明るいので、技術用語はそのまま書いてあります。</p>
+
+<div class="card">
+<h2>まず、この人に連絡してください</h2>
+<p>サイトやアカウントの後始末は、下記の人と相談して進めてください。技術的なことは、この人が一番よく分かっています。</p>
+<dl>
+<dt>名前</dt><dd>白鳳</dd>
+<dt>連絡先</dt><dd>Discord の DM（ユーザー名： lantagram_hakuho）</dd>
+</dl>
+</div>
+
+<div class="card">
+<h2>このサイトとドメインについて</h2>
+<dl>
+<dt>ドメイン</dt><dd>nekomimi0128.com</dd>
+<dt>契約</dt><dd>Xserver ドメインで契約中。自動更新あり（契約期限：2027年11月10日）</dd>
+<dt>公開の仕組み</dt><dd>Cloudflare Workers 経由で公開しています</dd>
+<dt>私の希望</dt><dd>しばらく残してもらって構いませんが、維持が負担になるようなら閉じて構いません。最終的な判断は、家族と白鳳に任せます</dd>
+</dl>
+<p>特に手続きをしなくても、ドメインの更新を止めれば、期限が来た時点でこのサイトは自然に消えます。判断に困ったら、白鳳に相談してください。</p>
+</div>
+
+<div class="card">
+<h2>アカウントの一覧</h2>
+<table>
+<tr><th>サービス</th><th>名前</th><th>備考</th></tr>
+<tr><td>GitHub</td><td>nekomimi0128</td><td>作ったものの置き場。このサイトの実体もここにあります。後継者（Successor）には白鳳を指定してあります。GitHub に私の死亡が証明されれば、リポジトリの所有権は白鳳に移ります</td></tr>
+<tr><td>Discord</td><td>@nekomimichanyo</td><td>家族には内緒にしてきたアカウントです。この個人アカウントのほか、白鳳との共有アカウントもあります。どちらも白鳳に引き継いでほしいです</td></tr>
+<tr><td>X</td><td>@Nekomimichanyo</td><td>こちらも家族には内緒にしてきたアカウントです。白鳳に引き継いでほしいです</td></tr>
+<tr><td>Google</td><td>複数</td><td>Gmail アドレスを複数持っています（u5*@gmail.com、n3*@gmail.com、29*@gmail.com、um*@gmail.com、ne*@gmail.com、その他諸々）。全て白鳳に引き継いでほしいです</td></tr>
+<tr><td>QRZ.com</td><td>JF6GXS</td><td>アマチュア無線のコールサイン</td></tr>
+</table>
+<p>パスワード類は、このページには書いていません。各サービスには「利用者が亡くなった場合」の手続き（後継者設定や記念アカウント化など）があるので、白鳳と相談のうえで進めてください。</p>
+</div>
+
+<div class="card">
+<h2>Google の「もしも」の設定</h2>
+<p>Google アカウントには「アカウント無効化管理ツール」で、私が長期間アカウントを使わなくなった場合の手続きを設定してあります（メインの Google アカウント n3*@gmail.com に設定済みです）。</p>
+<dl>
+<dt>7か月後</dt><dd>最後の利用から7か月が過ぎたら、私の別のメールアドレス宛に通知が届きます</dd>
+<dt>9か月後</dt><dd>「信頼済み連絡先」として登録した3名に通知が届き、私が選んだサービスのデータへのアクセス権が、その人たちに渡ります</dd>
+<dt>連絡先</dt><dd>dai***@gmail.com、cas***@gmail.com、lar***@gmail.com（他の人のアドレスなので、一部を伏せています）</dd>
+<dt>管理画面</dt><dd>https://myaccount.google.com/inactive</dd>
+</dl>
+<p>この手続きは Google の仕組みで自動的に進むので、家族側で特別な操作は要りません。通知を受け取った人と、白鳳とで相談して進めてください。</p>
+</div>
+
+<div class="card">
+<h2>残してほしいもの／消してほしいもの</h2>
+<ul>
+<li>残してほしいもの：GitHub に置いた作ったものと、このサイト（可能な範囲で）。QRZ.com のアマチュア無線の記録も、残せるなら残してください</li>
+<li>消してほしいもの（最重要）：私の所有する全ての端末・記録媒体（パソコン、スマートフォン、タブレット、外付けの記録媒体など）の中身。検索履歴を含む全てのデータを、中身を見ずに消去してください。可能であれば、ゼロフィル（0で上書き）など、復元できない方法でお願いします。これは私の尊厳に関わる、本気のお願いです</li>
+<li>人に見られたくないもの：上記の消去で全て含まれます。繰り返しますが、中身は見ないでください</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>最後に</h2>
+<p>ここまで読んでくれて、ありがとうございました。急な話で驚かせてしまったら、ごめんなさい。サイトも、アカウントも、作ったものも、全部ひっくるめて楽しい時間でした。後のことは、無理のない範囲でお願いします。</p>
+</div>
+
+<p class="note">このページは検索エンジンに表示されない設定（noindex）にしています。URLを知っている人だけが読めます。最終更新：2026年11月15日</p>
+</div>
+<script>
+  const c = document.getElementById('stars'), x = c.getContext('2d');
+  let W, H; const S = [];
+  function rs() { W = c.width = innerWidth; H = c.height = innerHeight; }
+  addEventListener('resize', rs); rs();
+  for (let i = 0; i < 140; i++) S.push({ x: Math.random() * W, y: Math.random() * H, r: Math.random() * 1.3 + .2, p: Math.random() * 6.28 });
+  (function d(t) { x.clearRect(0, 0, W, H); for (const s of S) { x.globalAlpha = .35 + .35 * Math.sin(t / 900 + s.p); x.fillStyle = '#cfe6ff'; x.beginPath(); x.arc(s.x, s.y, s.r, 0, 6.29); x.fill(); } requestAnimationFrame(d); })(0);
+</script>
+</body>
+</html>
